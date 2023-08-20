@@ -1,16 +1,17 @@
+import ApplicationLogo from '@/components/shared/ApplicationLogo';
+import LoadingSpinner from '@/components/shared/LoadingSpinner';
+import OtherLoginOption from '@/components/shared/OtherLoginOption';
+import { useLoginMutation } from '@/features/auth/authApi';
+
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import ApplicationLogo from '../components/shared/ApplicationLogo';
-import LoadingSpinner from '../components/shared/LoadingSpinner';
-import OtherLoginOption from '../components/shared/OtherLoginOption';
-import { useLoginMutation } from '../features/auth/authApi';
 
 export default function Login() {
 	const navigate = useNavigate();
 
-	const [username, setUsername] = useState('kzamanbn@gmail.com');
-	const [password, setPassword] = useState('password');
-	const [loginError, setLoginError] = useState('');
+	const [username, setUsername] = useState<string>('kzamanbn@gmail.com');
+	const [password, setPassword] = useState<string>('password');
+	const [loginError, setLoginError] = useState<string>('');
 
 	const [login, { isLoading }] = useLoginMutation();
 

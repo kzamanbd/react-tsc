@@ -1,15 +1,15 @@
+import Dashboard from '@/pages/Dashboard';
+import Login from '@/pages/Login';
 import { useDispatch } from 'react-redux';
-import Dashboard from './pages/Dashboard';
-import Login from './pages/Login';
 
 // components
-import PublicRoute from './components/PublicRoute';
+import PublicRoute from '@/components/PublicRoute';
 
 import { useEffect } from 'react';
 import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
-import PrivateRoute from './components/PrivateRoute';
-import { useGetCurrentUserQuery } from './features/auth/authApi';
-import { updateCurrentUser } from './features/auth/authSlice';
+import PrivateRoute from '@/components/PrivateRoute';
+import { useGetCurrentUserQuery } from '@/features/auth/authApi';
+import { updateCurrentUser } from '@/features/auth/authSlice';
 
 function App() {
 	const dispatch = useDispatch();
