@@ -1,15 +1,14 @@
+import PrivateRoute from '@/components/PrivateRoute';
+import PublicRoute from '@/components/PublicRoute';
 import Dashboard from '@/pages/Dashboard';
 import Login from '@/pages/Login';
-import { useDispatch } from 'react-redux';
+import Register from '@/pages/Register';
 
-// components
-import PublicRoute from '@/components/PublicRoute';
-
-import { useEffect } from 'react';
-import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
-import PrivateRoute from '@/components/PrivateRoute';
 import { useGetCurrentUserQuery } from '@/features/auth/authApi';
 import { updateCurrentUser } from '@/features/auth/authSlice';
+import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
 
 function App() {
 	const dispatch = useDispatch();
@@ -31,7 +30,15 @@ function App() {
 		<Router>
 			<Routes>
 				<Route
-					path="/"
+					path="/:conversationId?"
+					element={
+						<PrivateRoute>
+							<Dashboard />
+						</PrivateRoute>
+					}
+				/>
+				<Route
+					path="/login"
 					element={
 						<PublicRoute>
 							<Login />
@@ -39,11 +46,11 @@ function App() {
 					}
 				/>
 				<Route
-					path="/dashboard"
+					path="/register"
 					element={
-						<PrivateRoute>
-							<Dashboard />
-						</PrivateRoute>
+						<PublicRoute>
+							<Register />
+						</PublicRoute>
 					}
 				/>
 			</Routes>
